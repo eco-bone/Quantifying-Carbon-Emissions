@@ -1,0 +1,21 @@
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame(data)
+
+# random_state can be changed but do not make it more than 42 else no use  
+# start of func
+def sample_features(df, sample_size):
+    sampled_df = pd.DataFrame()
+    for column in df.columns:
+        sampled_df[column] = df[column].sample(n=sample_size, random_state=42).reset_index(drop=True)
+    
+    return sampled_df
+# end of func
+
+# set the sample size
+sample_size = 100
+
+# call the function
+sampled_df = sample_features(df, sample_size)
+print(sampled_df)
